@@ -14,8 +14,9 @@ echo "Key path: $key_file"
 
 if [ -f "$key_file" ]; then
 	echo "-----> Running SSH private key setup"
-
-	mkdir "$HOME/.ssh"
+	echo $HOME
+	mkdir -p "$HOME/.ssh"
+	chmod 700 "$HOME/.ssh"
 	cp "$key_file" "$HOME/.ssh/id_rsa"
 	chmod 0400 $HOME/.ssh/id_rsa
 	exit 0
