@@ -19,7 +19,7 @@ if [ -f "$key_file" ]; then
 	chmod 700 "$HOME/.ssh"
 	cat "$key_file" | base64 --decode > "$HOME/.ssh/id_rsa"
 	#cp "$key_file" "$HOME/.ssh/id_rsa"
-	chmod 0400 $HOME/.ssh/id_rsa
+	chmod 600 $HOME/.ssh/id_rsa
 	exit 0
 else
 	echo "-----> No SSH private key"
