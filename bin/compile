@@ -10,16 +10,15 @@ function indent() {
 
 env_dir=$3
 key_file="$env_dir/DEPLOYMENT_SSH_KEY"
-echo "Key path: $key_file"
+private_repo_host=$(cat "$env_dir/PRIVATE_REPO_HOST")
+private_repo_port=$(cat "$env_dir/PRIVATE_REPO_PORT")
 
 if [ -f "$key_file" ]; then
 	echo "-----> Running SSH private key setup"
-	ssh-keyscan -H dev.apebble.com >> "$HOME/.ssh/known_hosts"
-	echo $HOME
+	echo "       Private repo host: $private_repo_host:$private_repo_port"
 	mkdir -p "$HOME/.ssh"
-	chmod 700 "$HOME/.ssh"
-	cp "$key_file" "$HOME/.ssh/id_rsa"
-	chmod 0400 $HOME/.ssh/id_rsa
+	cat "$key_file" | base64 --decode > "$HOME/.ssh/id_rsa"
+	ssh-keyscan -p $private_repo_port -H $private_repo_host >> "$HOME/.ssh/known_hosts"
 	exit 0
 else
 	echo "-----> No SSH private key"
