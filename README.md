@@ -1,5 +1,9 @@
 # ssh-private-key-buildpack
 
+## Not Functioning
+
+If you've stumbled upon this as you attempt to make your Heroku deploy work with your private repository, note that it's not working yet.
+
 A heroku buildpack for setting the ssh private key as part of the application build. It's meant to be used with [heroku-buildpack-multi](https://github.com/heroku/heroku-buildpack-multi), before other buildpacks which require the key to be present, like installing private `npm` modules from `github`.
 
 # Example usage
