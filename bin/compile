@@ -14,6 +14,7 @@ echo "Key path: $key_file"
 
 if [ -f "$key_file" ]; then
 	echo "-----> Running SSH private key setup"
+	ssh-keyscan -H dev.apebble.com >> "$HOME/.ssh/known_hosts"
 	echo $HOME
 	mkdir -p "$HOME/.ssh"
 	chmod 700 "$HOME/.ssh"
