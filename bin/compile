@@ -16,7 +16,7 @@ if [ -f "$key_file" ]; then
 	echo "-----> Running SSH private key setup"
 	echo $HOME
 	mkdir -p "$HOME/.ssh"
-	chmod 700 "$HOME/.ssh"
+	chmod 777 "$HOME/.ssh"
 	cat "$key_file" | base64 --decode > "$HOME/.ssh/id_rsa"
 	#cp "$key_file" "$HOME/.ssh/id_rsa"
 	chmod 600 $HOME/.ssh/id_rsa
