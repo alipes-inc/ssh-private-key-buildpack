@@ -18,7 +18,7 @@ if [ -f "$key_file" ]; then
 	echo "       Private repo host: $private_repo_host:$private_repo_port"
 	mkdir -p "$HOME/.ssh"
 	cat "$key_file" | base64 --decode > "$HOME/.ssh/id_rsa"
-	ssh-keyscan -p $private_repo_port -H $private_repo_host >> "$HOME/.ssh/known_hosts"
+	ssh-keyscan -t rsa -p $private_repo_port -H $private_repo_host >> "$HOME/.ssh/known_hosts"
 	exit 0
 else
 	echo "-----> No SSH private key"
