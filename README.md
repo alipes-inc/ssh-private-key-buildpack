@@ -16,7 +16,7 @@ Use `--index` to make sure the buildpack runs before any others which might need
 the SSH key setup:
 
 ``` sh-session
-$ heroku buildpacks:add --index 1 https://github.com/feedbackfriuts/ssh-private-key-buildpack.git
+$ heroku buildpacks:add --index 1 https://github.com/alipes-inc/ssh-private-key-buildpack.git
 ```
 
 You could also use Heroku's GUI to add this buildpack.
