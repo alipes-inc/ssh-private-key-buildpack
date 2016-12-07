@@ -1,17 +1,13 @@
 # ssh-private-key-buildpack
 
-## Not Functioning
-
-If you've stumbled upon this as you attempt to make your Heroku deploy work with your private repository, note that it's not working yet.
-
-A heroku buildpack for setting the ssh private key as part of the application build. It's meant to be used with [heroku-buildpack-multi](https://github.com/heroku/heroku-buildpack-multi), before other buildpacks which require the key to be present, like installing private `npm` modules from `github`.
+A heroku buildpack for setting the ssh private key as part of the application build. It's meant to be used before other buildpacks which require the key to be present, like installing private `npm` modules or `composer` packages from `github`.
 
 # Example usage
 
 Upload the private key to heroku (note that the key needs to be base64 encoded).
 
 ``` sh-session
-$ heroku config:set DEPLOYMENT_SSH_KEY="$(cat ~/.ssh/id_rsa)"
+$ heroku config:set DEPLOYMENT_SSH_KEY="$(cat ~/.ssh/id_rsa | base64)"
 ```
 
 Use the Heroku Toolbelt to
@@ -23,4 +19,4 @@ the SSH key setup:
 $ heroku buildpacks:add --index 1 https://github.com/feedbackfriuts/ssh-private-key-buildpack.git
 ```
 
-Now as long as the public key is present on github and the user has the correct permissions, it's possible to install `npm` modules from private `github` repositories.
+You could also use Heroku's GUI to add this buildpack.
